@@ -1,6 +1,5 @@
 from rest_framework import viewsets, mixins, filters
 from rest_framework.pagination import LimitOffsetPagination
-from rest_framework import serializers
 
 from .permissions import IsAutherOrReadOnly
 from posts.models import Post, Group, Comment, Follow
@@ -58,8 +57,4 @@ class FollowViewSet(CreateListModeViewSet):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
-        if serializer.validated_data.get('following') == self.request.user:
-            raise serializers.ValidationError(
-                "Нельзя подписаться на самого себя!"
-            )
         super(FollowViewSet, self).perform_create(serializer)
