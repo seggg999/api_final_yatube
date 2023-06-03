@@ -110,3 +110,7 @@ python3 manage.py runserver
     "following": "uss",
     "user": "user"
 `}
+
+### Автор проекта
+    Сергей Долгов
+
